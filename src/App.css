@@ -1,31 +1,71 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App.css */
+.background-container {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #4776E6, #8E54E9);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.glass-card {
+  max-width: 650px;
+  max-width:80%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  position: relative; /* Adjust if needed for positioning */
+  z-index: 2;
 }
 
-.App-link {
-  color: #61dafb;
+.glass-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.heart {
-  color: #ff0000;
+.glass-card p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
-.small {
-  font-size: 0.75rem;
+.glass-card button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.glass-card button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  
+}
+.form-control {
+  max-width: 400px;
+  margin: 0 auto; /* This will help in centering if flex properties are not used */
+  /* Rest of your styles... */
+}
+.form-control, .btn-primary {
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent for input and button */
+  border: none;
+  box-shadow: none; /* Optional: Remove default styling */
+}
+
+/* Adjust the hover and focus styles as needed */
+.form-control:focus, .btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  /* Add any additional styling for hover/focus states */
 }

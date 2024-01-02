@@ -54,7 +54,8 @@ function App() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="background-container row g-0">
+    <div className="col-10 col-md-8 col-lg-6 container ms-3 me-3 mt-5  glass-card">
       <h1>BMI Calculator</h1>
       <form onSubmit={calculateBmi}>
         {/* Weight Input */}
@@ -185,6 +186,7 @@ function App() {
           <h3>Your BMI: {bmi}</h3>
         </div>
       )}
+    </div>
     </div>
   );
 }
