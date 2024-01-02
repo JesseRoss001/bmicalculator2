@@ -2,19 +2,54 @@ import './App.css';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from 'react-slider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAppleAlt, faWalking, faHeartbeat, faExclamationTriangle, faWeight } from '@fortawesome/free-solid-svg-icons';
 
 const InfoBox = ({ bmi }) => {
   let content;
-  if (bmi < 18.5) content = 'Underweight info...';
-  else if (bmi < 24.9) content = 'Normal weight info...';
-  else if (bmi < 29.9) content = 'Overweight info...';
-  else content = 'Obesity info...';
+  if (bmi < 18.5) {
+    content = (
+      <ul className="info-list">
+        <li><FontAwesomeIcon icon={faExclamationTriangle} /> Elevated risk of malnutrition.</li>
+        <li><FontAwesomeIcon icon={faWalking} /> Possible immune system weakening.</li>
+        <li><FontAwesomeIcon icon={faAppleAlt} /> Potential for bone density loss.</li>
+      </ul>
+    );
+  } else if (bmi < 24.9) {
+    content = (
+      <ul className="info-list">
+        <li><FontAwesomeIcon icon={faWalking} /> Lower health risk.</li>
+        <li><FontAwesomeIcon icon={faHeartbeat} /> Maintain a balanced diet.</li>
+        <li><FontAwesomeIcon icon={faAppleAlt} /> Regular exercise recommended.</li>
+      </ul>
+    );
+  } else if (bmi < 29.9) {
+    content = (
+      <ul className="info-list">
+        <li><FontAwesomeIcon icon={faHeartbeat} /> Increased risk for heart conditions.</li>
+        <li><FontAwesomeIcon icon={faWeight} /> Higher likelihood of high blood pressure.</li>
+        <li><FontAwesomeIcon icon={faExclamationTriangle} /> Potential for type 2 diabetes.</li>
+      </ul>
+    );
+  } else if (bmi < 34.9) {
+    content = (
+      <ul className="info-list">
+        <li><FontAwesomeIcon icon={faWeight} /> Higher risk of heart disease and stroke.</li>
+        <li><FontAwesomeIcon icon={faExclamationTriangle} /> May lead to breathing problems and sleep apnea.</li>
+        <li><FontAwesomeIcon icon={faExclamationTriangle} /> Increased chance of gallbladder disease.</li>
+      </ul>
+    );
+  } else {
+    content = (
+      <ul className="info-list">
+        <li><FontAwesomeIcon icon={faExclamationTriangle} /> Critical risk for cardiovascular diseases.</li>
+        <li><FontAwesomeIcon icon={faWeight} /> Severe strain on joints and bones.</li>
+        <li><FontAwesomeIcon icon={faHeartbeat} /> Elevated risk for certain cancers.</li>
+      </ul>
+    );
+  }
 
-  return (
-    <div className={`info-box ${bmi ? 'visible' : ''}`}>
-      {content}
-    </div>
-  );
+  return <div className={`info-box ${bmi ? 'visible' : ''}`}>{content}</div>;
 };
 
 function App() {

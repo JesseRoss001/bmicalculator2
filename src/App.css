@@ -1,11 +1,12 @@
 /* App.css */
 .background-container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #4776E6, #8E54E9);
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 .slider {
   width: 100%;
@@ -37,11 +38,13 @@
   max-width: 650px;
   max-width:80%;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px); /* Increase the blur */
+  -webkit-backdrop-filter: blur(20px); /* Don't forget the prefixed version for cross-browser compatibility */
+
   border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
   text-align: center;
@@ -93,4 +96,68 @@
 .form-control:focus, .btn-primary:hover {
   background-color: rgba(255, 255, 255, 0.7);
   /* Add any additional styling for hover/focus states */
+}
+
+.form-check-input {
+  /* Styles to reset the default appearance */
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent; /* To make the background transparent */
+  margin: 0;
+  font: inherit;
+  color: #2af598; /* The color sampled from your background */
+  width: 1.5em; /* Fixed size for the radio buttons */
+  height: 1.5em; /* Fixed size for the radio buttons */
+  border: 2px solid #009efd; /* Border color same as the background */
+  border-radius: 50%;
+  transform: translateY(0%); /* Center the button vertically */
+  display: grid;
+  place-content: center;
+}
+
+/* Before pseudo-element for the inner circle */
+.form-check-input::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #009efd; /* Inset shadow color same as the background */
+}
+
+/* When checked, use the scale transformation to create the fill effect */
+.form-check-input:checked::before {
+  transform: scale(1);
+}
+
+/* Additional styles for hover, focus, and active states can be added for interactivity */
+.form-check-input:hover {
+  border-color: #009efd; /* Darken the border color on hover for better visibility */
+}
+
+.form-check-input:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: 0 0 0 2px rgba(130, 138, 255, 0.5); /* A soft glow when the radio button is focused */
+}
+
+
+.info-box {
+  /* existing styles */
+  margin-top: 2em; /* Adds more space at the top */
+  font-size: 1.2em; /* Makes the text larger */
+}
+
+.info-box div {
+  margin-bottom: 0.5em; /* Adds space between lines */
+}
+
+.info-list {
+  list-style-type: none; /* Removes the default list bullet points */
+  padding: 0; /* Removes the default padding */
+  margin-top: 1rem; /* Adds space at the top */
+}
+
+.info-list li {
+  margin-bottom: 0.5rem; /* Adds space between list items */
 }
