@@ -7,7 +7,32 @@
   justify-content: center;
   align-items: center;
 }
-
+.slider {
+  width: 100%;
+  height: 25px;
+}
+.slider .thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #f8f2f2;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative; /* Ensure that the thumb is positioned relative to the track */
+}
+.thumb:onclick{background-color: #8E54E9;}
+.slider .track {
+  background: #ddd;
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+}
+.slider .track0 {
+  background: blue; /* The part of the track the thumb has passed */
+}
+.slider .thumb:focus {
+  outline: none;
+}
 .glass-card {
   max-width: 650px;
   max-width:80%;

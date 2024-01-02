@@ -1,6 +1,21 @@
 import './App.css';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Slider from 'react-slider';
+
+const InfoBox = ({ bmi }) => {
+  let content;
+  if (bmi < 18.5) content = 'Underweight info...';
+  else if (bmi < 24.9) content = 'Normal weight info...';
+  else if (bmi < 29.9) content = 'Overweight info...';
+  else content = 'Obesity info...';
+
+  return (
+    <div className={`info-box ${bmi ? 'visible' : ''}`}>
+      {content}
+    </div>
+  );
+};
 
 function App() {
   const [weight, setWeight] = useState('');
@@ -10,7 +25,7 @@ function App() {
   const [bmi, setBmi] = useState(null);
   const [weightUnit, setWeightUnit] = useState('kg'); // 'kg', 'lbs', 'st'
   const [heightUnit, setHeightUnit] = useState('cm'); // 'cm', 'in', 'ft'
-
+  const [sliderBmi, setSliderBmi] = useState(22); // Example starting point
   const handleUnitChange = (e, type) => {
     if (type === 'weight') {
       setWeightUnit(e.target.value);
@@ -55,6 +70,25 @@ function App() {
 
   return (
     <div className="background-container row g-0">
+          <div className="col-10 col-md-8 col-lg-6 container ms-3 me-3 mt-5 glass-card">
+      <h1>BMI Slider</h1>
+      <div className="bmi-slider-value">
+  {`${sliderBmi}`}
+</div>
+      <Slider
+  defaultValue={22}
+  min={10}
+  max={40}
+  step={0.1}
+  onChange={val => setSliderBmi(val)}
+  className="slider"
+  thumbClassName="thumb"
+  trackClassName={(index, value) => index === 0 ? 'track0' : 'track'}
+/>
+      <InfoBox bmi={sliderBmi} />
+
+      {/* Rest of your form goes here... */}
+    </div>
     <div className="col-10 col-md-8 col-lg-6 container ms-3 me-3 mt-5  glass-card">
       <h1>BMI Calculator</h1>
       <form onSubmit={calculateBmi}>
