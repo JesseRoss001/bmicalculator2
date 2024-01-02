@@ -3,55 +3,56 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  // State for weight, height, and BMI
   const [weight, setWeight] = useState('');
+  const [extraWeight, setExtraWeight] = useState(''); // for pounds when weight is in stones
   const [height, setHeight] = useState('');
+  const [extraHeight, setExtraHeight] = useState(''); // for inches when height is in feet
   const [bmi, setBmi] = useState(null);
-
-  // State for unit selection
   const [weightUnit, setWeightUnit] = useState('kg'); // 'kg', 'lbs', 'st'
   const [heightUnit, setHeightUnit] = useState('cm'); // 'cm', 'in', 'ft'
 
-  // Function to handle unit change
   const handleUnitChange = (e, type) => {
     if (type === 'weight') {
       setWeightUnit(e.target.value);
+      setWeight('');
+      setExtraWeight('');
     } else if (type === 'height') {
       setHeightUnit(e.target.value);
+      setHeight('');
+      setExtraHeight('');
     }
   };
 
-  // Function to convert weight to kilograms
-  const convertWeightToKg = (weight, unit) => {
+  const convertWeightToKg = (weight, extraWeight, unit) => {
     switch (unit) {
-      case 'lbs': return weight * 0.453592;
-      case 'st': return weight * 6.35029;
-      default: return weight; // kg
+      case 'lbs':
+        return weight * 0.453592;
+      case 'st':
+        return weight * 6.35029 + extraWeight * 0.453592;
+      default:
+        return weight; // kg
     }
   };
 
-  // Function to convert height to centimeters
-  const convertHeightToCm = (height, unit) => {
+  const convertHeightToCm = (height, extraHeight, unit) => {
     switch (unit) {
-      case 'in': return height * 2.54;
-      case 'ft': return height * 30.48;
-      default: return height; // cm
+      case 'in':
+        return height * 2.54;
+      case 'ft':
+        return height * 30.48 + extraHeight * 2.54;
+      default:
+        return height; // cm
     }
   };
 
-  // Function to calculate BMI
   const calculateBmi = (e) => {
     e.preventDefault();
-
-    let convertedWeight = convertWeightToKg(weight, weightUnit);
-    let convertedHeight = convertHeightToCm(height, heightUnit);
-
-    // BMI calculation formula
+    let convertedWeight = convertWeightToKg(weight, extraWeight, weightUnit);
+    let convertedHeight = convertHeightToCm(height, extraHeight, heightUnit);
     let bmiValue = convertedWeight / (convertedHeight / 100) ** 2;
     setBmi(bmiValue.toFixed(2));
   };
 
-  // BMI Form
   return (
     <div className="container mt-5">
       <h1>BMI Calculator</h1>
@@ -67,6 +68,15 @@ function App() {
             onChange={(e) => setWeight(e.target.value)}
             required
           />
+          {weightUnit === 'st' && (
+            <input
+              type="number"
+              className="form-control mt-2"
+              placeholder="Additional pounds (if weight in stones)"
+              value={extraWeight}
+              onChange={(e) => setExtraWeight(e.target.value)}
+            />
+          )}
           {/* Weight Unit Selection */}
           <div className="form-check form-check-inline">
             <input
@@ -117,6 +127,15 @@ function App() {
             onChange={(e) => setHeight(e.target.value)}
             required
           />
+          {heightUnit === 'ft' && (
+            <input
+              type="number"
+              className="form-control mt-2"
+              placeholder="Additional inches (if height in feet)"
+              value={extraHeight}
+              onChange={(e) => setExtraHeight(e.target.value)}
+            />
+          )}
           {/* Height Unit Selection */}
           <div className="form-check form-check-inline">
             <input
