@@ -2,7 +2,7 @@
   "name": "codesis-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jesseross001.github.io/bmicalculator2/",
+  "homepage": "https://jesseross001.github.io/bmicalculator2",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
@@ -12,7 +12,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "bootstrap": "^5.3.2",
-    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-slider": "^2.0.6",
@@ -27,11 +26,12 @@
   },
   "scripts": {
     "start": "BROWSER=none WDS_SOCKET_PORT=0 vite --port 3000",
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d dist",
+
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.1.1",
+    "gh-pages": "^6.1.1",
     "jsdom": "^22.1.0",
     "vite": "^4.5.1",
     "vitest": "^0.34.6"
