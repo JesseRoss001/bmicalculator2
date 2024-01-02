@@ -1,10 +1,11 @@
 import './App.css';
+import myGif from '/Create.png';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from 'react-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAppleAlt, faWalking, faHeartbeat, faExclamationTriangle, faWeight } from '@fortawesome/free-solid-svg-icons';
-
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 const InfoBox = ({ bmi }) => {
   let content;
   if (bmi < 18.5) {
@@ -104,8 +105,9 @@ function App() {
   };
 
   return (
-    <div className="background-container row g-0">
-          <div className="col-10 col-md-8 col-lg-6 container ms-3 me-3 mt-5 glass-card">
+    <div className="background-container pb-5 pt-4 row g-0">
+
+          <div className="col-10 col-md-8 col-lg-6 container ms-3 me-3 mt-3 glass-card">
       <h1>BMI Slider</h1>
       <div className="bmi-slider-value">
   {`${sliderBmi}`}
@@ -256,6 +258,27 @@ function App() {
         </div>
       )}
     </div>
+    <div className="col-10 col-md-8 col-lg-6 mt-3 glass-card d-flex justify-content-center align-items-center">
+  <p className=' header mt-4 me-2 ms-1' > Copyright @ Create Nova </p>
+  <a
+        href="https://www.linkedin.com/in/jesseross001"
+        className="btn btn-custom-linkedin"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
+      </a>
+
+      <a
+        href="https://github.com/JesseRoss001"
+        className="btn btn-custom-github me-1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon icon={faGithub} /> GitHub
+      </a>
+      
+</div>
     </div>
   );
 }

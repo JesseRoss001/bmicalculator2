@@ -161,3 +161,38 @@
 .info-list li {
   margin-bottom: 0.5rem; /* Adds space between list items */
 }
+
+.header { padding-top:6px;
+  margin-top:5px;
+  
+}
+
+.btn-custom-linkedin, .btn-custom-github {
+  padding: 0px 20px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  margin: 0px;
+  
+}
+
+.btn-custom-linkedin {
+  background-color: #0077b5; /* LinkedIn blue */
+}
+
+.btn-custom-linkedin:hover {
+  background-color: #005582; /* A darker LinkedIn blue */
+}
+
+.btn-custom-github {
+  background-color: #333; /* GitHub black */
+}
+
+.btn-custom-github:hover {
+  background-color: #222; /* A darker GitHub black */
+}
+
+
