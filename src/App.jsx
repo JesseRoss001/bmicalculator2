@@ -1,6 +1,7 @@
 import './App.css';
 import myGif from '/Create.png';
 import React, { useState } from 'react';
+import { useSpring, animated } from 'react-spring';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from 'react-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -54,6 +55,10 @@ const InfoBox = ({ bmi }) => {
 };
 
 function App() {
+  const appFadeIn = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+  });
   const [weight, setWeight] = useState('');
   const [extraWeight, setExtraWeight] = useState(''); // for pounds when weight is in stones
   const [height, setHeight] = useState('');
@@ -105,7 +110,7 @@ function App() {
   };
 
   return (
-    <div className="background-container pb-5 pt-4 row g-0">
+    <animated.div style={appFadeIn} className="background-container pb-5 pt-4 row g-0">
 
           <div className="col-10 col-md-8 col-lg-6 container ms-3 me-3 mt-3 glass-card">
       <h1>BMI Slider</h1>
@@ -279,7 +284,7 @@ function App() {
       </a>
       
 </div>
-    </div>
+</animated.div>
   );
 }
 
